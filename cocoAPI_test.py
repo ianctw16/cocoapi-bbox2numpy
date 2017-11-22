@@ -28,13 +28,10 @@ d3.setdefault('ids', [])
 for i in range(0, len(anns)):
     d['boxes'].append(anns[i]['bbox'])
 # store image_id in d2['images']
-print(len(anns))
 for i in range(0, len(anns)):
     d2['images'].append(anns[i]['image_id'])
-    #  print(d2['images'])
-print(d2['images'][2412], d2['images'][0])
 # store file_name in d3['ids']
-for id in d2['images']:
+for id in range(0, len(d2['images'])):
     d3['ids'].append(cocoGT.imgs[anns[id]['image_id']]['file_name'])
 
 # trans d['boxes'] to numpy array
@@ -49,7 +46,9 @@ np.savez("my_data", images=images, boxes=image_labels)
 
 data = np.load('my_data.npz')
 
+'''read test
 image_data = data['images']
 boxes = data['boxes']
 print(image_data)
 print(boxes)
+'''
